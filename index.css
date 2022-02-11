@@ -1,0 +1,11 @@
+.page {
+  background: #eeeeee;
+  width: 340px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.darwin.page {
+  border-radius: 5px;
+  overflow: hidden;
+}
