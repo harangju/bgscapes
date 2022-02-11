@@ -1,0 +1,12 @@
+{
+  "name": "bg-scapes",
+  "version": "1.0.0",
+  "description": "Menubar app to set Punkscape desktop backgrounds",
+  "main": "index.js",
+  "repository": "https://github.com/harangju/bg-scapes",
+  "author": "Harang Ju",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^17.0.0"
+  }
+}
