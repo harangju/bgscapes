@@ -10,10 +10,9 @@
     "start": "electron ."
   },
   "devDependencies": {
-    "electron": "^17.0.0"
+    "electron": "^16.0.0"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.10",
     "menubar": "^9.1.1"
   }
 }
