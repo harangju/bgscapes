@@ -10,7 +10,7 @@
     "start": "electron ."
   },
   "devDependencies": {
-    "electron": "^16.0.0"
+    "electron": "^17.1.0"
   },
   "dependencies": {
     "menubar": "^9.1.1"

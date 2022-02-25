@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
-const { app, Menu, Tray, net, BrowserWindow } = require('electron');
+const { app, Menu, Tray, net } = require('electron');
 const { exec } = require('child_process');
 const { menubar } = require('menubar');
 
@@ -9,9 +9,11 @@ const iconPath = path.join(__dirname, 'assets', 'images', 'icon.png');
 const fileDir = path.join(app.getPath('userData'), 'gallery27');
 const filePath = path.join(fileDir, 'latest.png');
 const urlG27 = 'http://api.punkscape.xyz/gallery27/scapes/latest';
+const interval = 60 * 1000; // milliseconds
 
 let tray = null;
 let mb = null;
+var timer = null;
 
 app.whenReady().then(() => {
   initialize();
@@ -24,42 +26,50 @@ const initialize = function() {
 
   tray = new Tray(iconPath);
   const contextMenu = Menu.buildFromTemplate([
-    { label: 'Live', type: 'radio', checked: true},
-    { label: 'Off', type: 'radio'},
+    { id: 0, label: 'Live', type: 'radio', click: itemClicked, checked: true},
+    { id: 1, label: 'Off', type: 'radio', click: itemClicked},
+    { type: 'separator'},
+    { id: 2, label: 'Quit', type: 'normal', click: itemClicked}
   ]);
   tray.setContextMenu(contextMenu);
 
   mb = menubar({tray});
   mb.on('ready', () => {
-    console.log('Menubar app is ready.');
-    loadLatestScape(
-      imageURL => {
-        console.log(imageURL);
-        saveImage(imageURL, setBackground);
-      },
-      () => handleError()
-    );
+    console.log('ready');
+    loadLatestScape();
+    timer = setInterval(loop, interval);
+    tray.removeAllListeners();
   });
 };
 
-const loadLatestScape = function(onImageLoad, onError) {
+const itemClicked = function(menuItem, browserWindow, event) {
+  console.log(menuItem['label'], menuItem['id']);
+  if (menuItem['id']==0) {
+    clearInterval(timer);
+    timer = setInterval(loop, interval);
+  } else if (menuItem['id']==1) {
+    clearInterval(timer);
+  } else if (menuItem['id']==2) {
+    app.quit();
+  }
+}
+
+const loop = function() {
+  console.log('Loop');
+  loadLatestScape();
+}
+
+const loadLatestScape = function() {
   const request = net.request(urlG27);
   request.on('response', (response) => {
     console.log(`STATUS: ${response.statusCode}`);
     response.on('data', (data) => {
       let json = JSON.parse(data);
       let imageURL = json['image'];
-      onImageLoad(imageURL);
-    });
-    response.on('end', () => {
-      console.log('No more data in response.');
+      saveImage(imageURL, setBackground);
     });
   });
   request.end();
-};
-
-const handleError = function() {
-
 };
 
 const saveImage = function(imageURL, onDownload) {
@@ -78,7 +88,7 @@ const saveImage = function(imageURL, onDownload) {
 };
 
 const setBackground = function() {
-  var script = "/usr/bin/osascript<<END\ntell application \"System Events\" to tell every desktop to set picture to \"" + filePath + "\"\nEND"
+  let script = "/usr/bin/osascript<<END\ntell application \"System Events\" to tell every desktop to set picture to \"" + filePath + "\"\nEND"
   exec(script,
     function (error, stdout, stderr) {
       if (stdout) console.log('stdout: ' + stdout);
@@ -87,8 +97,4 @@ const setBackground = function() {
         console.log('exec error: ' + error);
       }
     });
-};
-
-const click = function(menuItem, browserWindow, event) {
-  console.log(menuItem);
 };
