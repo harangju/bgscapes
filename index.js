@@ -26,8 +26,8 @@ const initialize = function() {
 
   tray = new Tray(iconPath);
   const contextMenu = Menu.buildFromTemplate([
-    { id: 0, label: 'Live', type: 'radio', click: itemClicked, checked: true},
-    { id: 1, label: 'Off', type: 'radio', click: itemClicked},
+    { id: 0, label: 'Live', type: 'radio', click: itemClicked},
+    { id: 1, label: 'Off', type: 'radio', click: itemClicked, checked: true},
     { type: 'separator'},
     { id: 2, label: 'Quit', type: 'normal', click: itemClicked}
   ]);
@@ -36,8 +36,6 @@ const initialize = function() {
   mb = menubar({tray});
   mb.on('ready', () => {
     console.log('ready');
-    loadLatestScape();
-    timer = setInterval(loop, interval);
     tray.removeAllListeners();
   });
 };
@@ -45,6 +43,7 @@ const initialize = function() {
 const itemClicked = function(menuItem, browserWindow, event) {
   console.log(menuItem['label'], menuItem['id']);
   if (menuItem['id']==0) {
+    loadLatestScape();
     clearInterval(timer);
     timer = setInterval(loop, interval);
   } else if (menuItem['id']==1) {
