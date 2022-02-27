@@ -1,5 +1,5 @@
 {
-  "name": "bg-scapes",
+  "name": "BGScapes",
   "version": "1.0.0",
   "description": "Menubar app to set Punkscape desktop backgrounds",
   "main": "index.js",
