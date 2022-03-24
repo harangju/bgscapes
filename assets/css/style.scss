@@ -13,6 +13,15 @@ body {
     text-align: center;
 }
 
+.main-content {
+    color: #ffffff;
+}
+
 a.disabled {
     pointer-events: none;
+}
+
+:root {
+    --font-family-title: "Space Mono", monospace, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --font-family-body: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
