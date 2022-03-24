@@ -9,4 +9,5 @@ Menubar app for Punkscape desktop backgrounds.
 - [x] Distribute app on the project page
 - [ ] M1 Macs
 - [ ] Windows version
+- [ ] Sign app?
 - [ ] Preferences
