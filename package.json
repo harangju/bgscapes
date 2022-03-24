@@ -1,9 +1,9 @@
 {
   "name": "BGScapes",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Menubar app to set Punkscape desktop backgrounds",
   "main": "index.js",
-  "repository": "https://github.com/harangju/bg-scapes",
+  "repository": "https://github.com/harangju/bgscapes",
   "author": "Harang Ju",
   "license": "MIT",
   "scripts": {
@@ -30,7 +30,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "bg_scapes"
+            "name": "BGScapes"
           }
         },
         {
