@@ -1,6 +1,4 @@
-## BG Scapes
-
-BG Scapes is a small menu app that updates your desktop background to the latest bid on [Gallery 27](https://punkscape.xyz/gallery27/now/).
+BG Scapes is a menu app that updates your desktop background to the latest bid on [Gallery 27](https://punkscape.xyz/gallery27/now/).
 
 ![Gallery 27](https://raw.githubusercontent.com/harangju/bgscapes/gh-pages/gallery27.png)
 
