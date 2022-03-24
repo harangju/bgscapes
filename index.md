@@ -2,10 +2,6 @@
 
 ![Gallery 27](https://raw.githubusercontent.com/harangju/bgscapes/gh-pages/gallery27.png)
 
-### Download
-
-Download coming soon for Mac and later for Windows. See [Releases](https://github.com/harangju/bgscapes/releases).
-
 ### Contribute
 
 Feel free to submit pull requests to the repository.
