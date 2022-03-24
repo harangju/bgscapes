@@ -11,3 +11,11 @@ Menubar app for Punkscape desktop backgrounds.
 - [ ] Windows version
 - [ ] Sign app?
 - [ ] Preferences
+
+# Contribute
+
+Feel free to submit pull requests to the repository.
+
+# Contact
+
+Contact [@persn_eth](https://twitter.com/persn_eth) on Twitter or persn#3333 on Discord.
