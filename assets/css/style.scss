@@ -3,6 +3,10 @@
 
 @import "{{ site.theme }}";
 
+body {
+    background-color: #121212;
+}
+
 a.disabled {
     pointer-events: none;
 }
