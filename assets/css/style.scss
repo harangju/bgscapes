@@ -4,21 +4,23 @@
 @import "{{ site.theme }}";
 
 body {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #121212;
+    color: #EEEEEE;
 }
 
 .page-header {
-    color: #ffffff;
+    color: #EEEEEE;
     text-align: center;
+    background-color: #121212;
+    background-image: auto;
 }
 
-.main-content {
-    color: #ffffff;
+.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
+    color: #EEEEEE;
 }
 
 a {
-    color: #ffffff;
+    color: #EEEEEE;
     .disabled {
         pointer-events: none;
     }
