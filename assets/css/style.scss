@@ -12,7 +12,8 @@ body {
     color: #EEEEEE;
     text-align: center;
     background-color: #121212;
-    background-image: auto;
+    background-image: none;
+    padding: 4rem 6rem;
 }
 
 .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
@@ -20,7 +21,7 @@ body {
 }
 
 a {
-    color: #FF04B4;
+    color: #ff66d1;
     .disabled {
         pointer-events: none;
     }
