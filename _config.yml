@@ -2,3 +2,6 @@ theme: jekyll-theme-cayman
 title: BGScapes
 description: Live desktop backgrounds of 27 Year Scapes
 show_downloads: true
+github:
+  mac_zip_url: https://github.com/harangju/bgscapes/releases/download/v0.1.0/BGScapes-darwin-x64.zip
+  win_zip_url: 
