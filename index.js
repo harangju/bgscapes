@@ -26,7 +26,7 @@ const initialize = function() {
 
   tray = new Tray(iconPath);
   const contextMenu = Menu.buildFromTemplate([
-    { id: 0, label: 'Live', type: 'radio', click: itemClicked},
+    { id: 0, label: 'Live Updates', type: 'radio', click: itemClicked},
     { id: 1, label: 'Off', type: 'radio', click: itemClicked, checked: true},
     { type: 'separator'},
     { id: 2, label: 'Quit', type: 'normal', click: itemClicked}
