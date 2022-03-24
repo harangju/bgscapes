@@ -3,3 +3,6 @@
 
 @import "{{ site.theme }}";
 
+a.disabled {
+    pointer-events: none;
+}
