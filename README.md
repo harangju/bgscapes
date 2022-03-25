@@ -1,4 +1,4 @@
-# bg-scapes
+# BGScapes
 Menubar app for Punkscape desktop backgrounds.
 
 ![bgscape](https://github.com/harangju/bgscapes/blob/master/assets/images/bgscape.gif?raw=true)
