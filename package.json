@@ -1,6 +1,6 @@
 {
   "name": "BGScapes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Menubar app to set Punkscape desktop backgrounds",
   "main": "index.js",
   "repository": "https://github.com/harangju/bgscapes",
