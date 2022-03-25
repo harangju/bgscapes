@@ -7,10 +7,10 @@ const { menubar } = require('menubar');
 
 const iconPath = path.join(__dirname, 'assets', 'images', 'icon.png');
 const fileDir = path.join(app.getPath('userData'), 'gallery27');
-const filePath = path.join(fileDir, 'latest.png');
 const urlG27 = 'http://api.punkscape.xyz/gallery27/scapes/latest';
 const interval = 60 * 1000; // milliseconds
 
+var filePath = null;
 let tray = null;
 let mb = null;
 var timer = null;
@@ -65,6 +65,7 @@ const loadLatestScape = function() {
     response.on('data', (data) => {
       let json = JSON.parse(data);
       let imageURL = json['image'];
+      console.log(`Loading image from URL ${imageURL}`);
       saveImage(imageURL, setBackground);
     });
   });
@@ -73,10 +74,14 @@ const loadLatestScape = function() {
 
 const saveImage = function(imageURL, onDownload) {
   let request = https.get(imageURL, (response) => {
+    removeAllFiles();
+    filePath = getNewFilePath();
     let file = fs.createWriteStream(filePath);
     response.pipe(file);
+    console.log(`Saved filed to ${filePath}.`);
     file.on('finish', function() {
       file.close();
+      console.log('Downloaded file.');
       onDownload();
     });
   });
@@ -86,10 +91,31 @@ const saveImage = function(imageURL, onDownload) {
   request.end();
 };
 
+const getNewFilePath = function() {
+  let d = new Date();
+  let time = d.getTime();
+  return path.join(fileDir, time + '.png');;
+};
+
+const removeAllFiles = function() {
+  console.log(`read directory ${fileDir}`);
+  fs.readdir(fileDir, (err, files) => {
+    if (err) throw err;
+
+    for (const file of files) {
+      fs.unlink(path.join(fileDir, file), err => {
+        if (err) throw err;
+      });
+    }
+  });
+};
+
 const setBackground = function() {
-  let script = "/usr/bin/osascript<<END\ntell application \"System Events\" to tell every desktop to set picture to \"" + filePath + "\"\nEND"
+let script = "/usr/bin/osascript<<END\ntell application \"System Events\" to tell every desktop to set picture to \"" + filePath + "\"\nEND"
+  console.log(`Setting background from ${filePath}...`);
   exec(script,
     function (error, stdout, stderr) {
+      console.log('Set background.');
       if (stdout) console.log('stdout: ' + stdout);
       if (stderr) console.log('stderr: ' + stderr);
       if (error !== null) {
