@@ -10,6 +10,7 @@ Menubar app for Punkscape desktop backgrounds.
 ## To Do
 - [x] Make project page
 - [x] Distribute app on the project page
+- [ ] View scapes on menubar
 - [ ] M1 Macs
 - [ ] Windows version
 - [ ] Sign app?
