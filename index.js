@@ -69,6 +69,9 @@ const loadLatestScape = function() {
       saveImage(imageURL, setBackground);
     });
   });
+  request.on('error', function(error) {
+    console.log('error: ' + error.message);
+  });
   request.end();
 };
 
@@ -99,15 +102,12 @@ const getNewFilePath = function() {
 
 const removeAllFiles = function() {
   console.log(`read directory ${fileDir}`);
-  fs.readdir(fileDir, (err, files) => {
-    if (err) throw err;
-
-    for (const file of files) {
-      fs.unlink(path.join(fileDir, file), err => {
-        if (err) throw err;
-      });
-    }
-  });
+  files = fs.readdirSync(fileDir);
+  for (const file of files) {
+    fs.unlink(path.join(fileDir, file), err => {
+      if (err) throw err;
+    });
+  }
 };
 
 const setBackground = function() {
