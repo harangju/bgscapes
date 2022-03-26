@@ -1,13 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
-const { app, Menu, Tray, net } = require('electron');
+const { app, Menu, Tray, net, shell } = require('electron');
 const { exec } = require('child_process');
 const { menubar } = require('menubar');
 
 const iconPath = path.join(__dirname, 'assets', 'images', 'icon.png');
 const fileDir = path.join(app.getPath('userData'), 'gallery27');
 const urlG27 = 'http://api.punkscape.xyz/gallery27/scapes/latest';
+const urlPSLatest = 'https://punkscape.xyz/gallery27/now/';
 const interval = 60 * 1000; // milliseconds
 
 var filePath = null;
@@ -29,7 +30,9 @@ const initialize = function() {
     { id: 0, label: 'Live Updates', type: 'radio', click: itemClicked},
     { id: 1, label: 'Off', type: 'radio', click: itemClicked, checked: true},
     { type: 'separator'},
-    { id: 2, label: 'Quit', type: 'normal', click: itemClicked}
+    { id: 2, label: 'View on punkscape.xyz', type: 'normal', click: itemClicked},
+    { type: 'separator'},
+    { id: 3, label: 'Quit', type: 'normal', click: itemClicked}
   ]);
   tray.setContextMenu(contextMenu);
 
@@ -49,6 +52,8 @@ const itemClicked = function(menuItem, browserWindow, event) {
   } else if (menuItem['id']==1) {
     clearInterval(timer);
   } else if (menuItem['id']==2) {
+    shell.openExternal(urlPSLatest);
+  } else if (menuItem['id']==3) {
     app.quit();
   }
 }
