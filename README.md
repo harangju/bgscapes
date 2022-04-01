@@ -3,6 +3,10 @@ Menubar app for Punkscape desktop backgrounds.
 
 ![bgscape](https://github.com/harangju/bgscapes/blob/master/assets/images/bgscape.gif?raw=true)
 
+## Get started
+
+Either download the latest package in **Releases** or build it yourself using `yarn package` or `yarn make`.
+
 ## Releases
 - [0.1.3](https://github.com/harangju/bgscapes/releases/tag/v0.1.3) "view on punkscape.xyz" option
 - [0.1.2](https://github.com/harangju/bgscapes/releases/tag/v0.1.2) fixed fetch & saving errors, icon
@@ -15,6 +19,7 @@ Menubar app for Punkscape desktop backgrounds.
 - [x] Link to latest scape
 - [ ] Sign & notarize
 - [ ] "Classic" scape backgrounds
+- [ ] Show current bid stats (price, time)
 - [ ] M1 Macs
 - [ ] Windows version
 - [ ] View scapes on menubar
