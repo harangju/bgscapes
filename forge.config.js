@@ -4,7 +4,7 @@ const packageJson = require('./package.json');
 
 const config = {
   "packagerConfig": {
-    "icon": "build/icon.icns",
+    "icon": "build/icon-rounded.icns",
     "osxSign": {
       "identity": "Developer ID Application: Harang Ju (9VPE894343)",
       "hardened-runtime": true,
